@@ -1,0 +1,22 @@
+.main-banner {
+    max-width: 100%;
+}
+
+.main-banner .slick-dots {
+    bottom: 29px;
+}
+
+.main-banner .slick-dots li {
+    width: 19px;
+    margin: 0;
+}
+
+.main-banner .slick-dots li button:before {
+    font-size: 10px;
+    color: #BDBDBD;
+    opacity: 1;
+}
+
+.main-banner .slick-dots li.slick-active button:before {
+    color: #F8475F;
+}
