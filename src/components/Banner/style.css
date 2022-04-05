@@ -20,3 +20,9 @@
 .main-banner .slick-dots li.slick-active button:before {
     color: #F8475F;
 }
+
+@media screen and (max-width: 768px) {
+
+.main-banner .slick-dots{
+    bottom:10px;
+}}

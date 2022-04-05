@@ -1,53 +1,66 @@
-import React from "react";
-import "./style.css";
+import React, {useEffect, useState} from 'react';
+import './style.css';
 
-import  imgLogo from "../../assets/images/site-logo-corebiz.png"    
-import  imgMinicart from "../../assets/images/minicart-icon.png"    
-import  imgUser from "../../assets/images/user-icon.png.png"    
+import logoImg from '../../assets/images/site-logo-corebiz.png'
 
-const Header = () => {
+const Header = ({cartQuantity}) => {
+
+    console.log(window.innerWidth)
 
     return window.innerWidth > 768 ? (
-        <header>
-        <div className= "desktop-header-home-page">
-            <div className= "desktop-header-logo">
-                <img src = {imgLogo}/>
+        <header id="header">
+            <div className="header-nav container">
+                <div className="header-nav-logo">
+                <a href="/">
+                    <img src={logoImg} alt="Corebiz" />
+                </a>
+                </div>
+                <div className="header-nav-search">
+                <form className="search" action="">
+                    <input type="text" className="search-form" placeholder="O que você está procurando?"/>
+                </form>
+                </div>
+                <div className="header-nav-account">
+                <a href="#" className="account-text">Minha Conta</a>
+                </div>
+                <div className="header-nav-cart">
+                <a href="#" className="cart-icon"></a>
+                <span className="cart-quantity" >{cartQuantity}</span>
+                </div>
             </div>
-            <form className= "desktop-search-bar">
-                <input type = "search" className= "desktop-search-bar-product" placeholder = "O que está procurando?"/>
-                <input type = "submit" className= "desktop-search-bar-button"/>
-            </form>
-            <div className= "desktop-account">
-                <img src = {imgUser} className= "desktop-user-icon"/>
-                <a href = "https://google.com" target = "_blank" className= "desktop-my-account-link">Minha conta</a>
-            </div>
-            <div className= "minicart">
-                <img src = {imgMinicart}/>
-                <div className= "minicart-quantity" id = "minicart-quantity">0</div>
-            </div>
-        </div>
         </header>
     ) : (
-        <header>
-        <div className="mobile-header-home-page">
-            <div className="mobile-top-header">
-                <div className="mobile-menu">
-                    <span className="hamburger-menu"></span>
+        <header id="header">
+            <div class="header-nav-mobile container">
+                <div class="top-nav">
+                    <div class="top-nav-menu">
+                    <span class="top-nav-menu-icon"></span>
+                    <span class="top-nav-menu-icon"></span>
+                    <span class="top-nav-menu-icon"></span>
+                    </div>
+
+                    <div class="top-nav-logo">
+                    <a href="/">
+                        <img src={logoImg} alt="corebiz" />
+                    </a>
+                    </div>
+                    <div class="top-nav-cart">
+                    <a href="#" class="cart-icon"></a>
+                    <span class="cart-quantity">{cartQuantity}</span>
+                    </div>
                 </div>
-                <div className="mobile-header-logo">
-                    <img src="" alt="" className="mobile-logo"/>
-                </div>
-                <div className = "minicart">
-                    <div className = "minicart-quantity" id = "minicart-quantity">0</div>
+                <div class="header-search">
+                    <form class="search-form" action="">
+                    <input
+                        type="text"
+                        class="search"
+                        placeholder="O que você está procurando?"
+                    />
+                    </form>
                 </div>
             </div>
-            <div className="mobile-search-header">
-                <input type="text" id="" className="mobile-search-input"/>
-                <input type="submit" id="" className="mobile-search-button"/> 
-            </div>
-        </div>
         </header>
     )
 }
 
-export default Header
+export default Header;

@@ -1,76 +1,77 @@
-import React, {useState, useEffect} from "react"
-import Slider from "react-slick"
-import axios from "axios"
+import React, {useState, useEffect} from 'react';
+import formatValue from "../../formatValue";
+import Slider from 'react-slick';
+import api from '../../services/api';
 
-import "./style.css"
+import './style.css';
 
-const baseUrl = "https://corebiz-test.herokuapp.com/api/v1/products"
 
-const Products = () => {
+const Products = ({addToCart}) => {
 
-    const settings = {
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: true,
-        className: "shelf-content",
-        responsive: [
-        {
-            breakpoint: 768,
-            settings: {
-            arrows: false,
-            dots: true,
-            slidesToShow: 2,
-            infinite: false
-            }
-        }
-        ]
+const settings={
+infinite: true,
+slidesToShow: 4,
+slidesToScroll: 1,
+arrows: true,
+className: "shelf-content",
+responsive: [
+    {
+    breakpoint: 768,
+    settings: {
+        arrows: false,
+        dots: true,
+        slidesToShow: 2,
+        infinite: false
     }
-
-    const [products, setProducts] = useState([])
-    useEffect(()=>{
-        axios.get(baseUrl).then(response=>{
-            setProducts(
-            response.data.map(product=>{
-                console.log(product)
-                return {...product}
-            })
-            )
-        })
-    },[])
-
-    return (
-        <Slider {...settings}>
-            {products.map(({imageUrl, listPrice, price, productId, productName, stars, installments}) => {
-                return (
-                    <div className = "card" id = {productId}>
-                        <div className = "product-image">
-                            <img src = {imageUrl} alt = "Produto"/><br/>
-                        </div>
-                            <div className = "card-bottom">
-                                <p> {productName}</p><br/>
-                                <div>
-                                    {stars === 1 ? (<span className = "stars">&#9733;&#9734;&#9734;&#9734;&#9734;</span>) : 
-                                    stars === 2 ? (<span className = "stars">&#9733;&#9733;&#9734;&#9734;&#9734;</span>) : 
-                                    stars === 3 ? (<span className = "stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>) : 
-                                    stars === 4 ? (<span className = "stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>) : 
-                                    stars === 5 ? (<span className = "stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) : 
-                                    (<span>Erro</span>)}
-                                </div>
-                                <p className = "discount">de {listPrice}</p>
-                                <p className = "price">por {price}</p>
-                                <p className = "parcel"> 
-                                {installments[0] ? `ou em ${installments[0].quantity} x de ${installments[0].value}` : ""}
-                                </p>
-                            <div className = "button">
-                                <button onclick = "incrementClick()" className = "btn">COMPRAR</button>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
-        </Slider>
-    )
+    }
+]
 }
 
-export default Products
+const [products, setProducts] = useState([])
+useEffect(()=>{
+    api.get('products').then(response=>{
+    setProducts(
+        response.data.map(product=>{
+            console.log(product)
+            return {...product}
+        })
+    )
+    })
+},[])
+
+return(
+    <Slider {...settings}>
+    {products.map(({imageUrl, listPrice, price, productId, productName, stars, installments}, product)=>{
+        console.log(installments[0])
+        return(
+        <div className="card" id={productId} data-product-name={productName}>
+            <div className="card-image">
+                <img src={imageUrl}  alt="" className="product-image"/>
+                {listPrice ? (<p className="product-flag"></p>) : ''}
+                </div>
+            <div className="product-info">
+                <p className="product-name">{productName}</p>
+                <div className="product-rating" >
+                    {stars > 0 ? (<span className="star checked"></span>) : (<span className="star"></span>)}
+                    {stars > 1 ? (<span className="star checked"></span>) : (<span className="star"></span>)}
+                    {stars > 2 ? (<span className="star checked"></span>) : (<span className="star"></span>)}
+                    {stars > 3 ? (<span className="star checked"></span>) : (<span className="star"></span>)}
+                    {stars > 4 ? (<span className="star checked"></span>) : (<span className="star"></span>)}
+                </div>
+                <div className="product-price"> 
+                    <p className="list-price">{listPrice ? 'de ' + formatValue(String(listPrice)) : ''}</p>
+                    <p className="price">Por {formatValue(String(price))}</p>
+                </div>
+                <p className="product-installment">
+                    {installments[0] ? `ou em ${installments[0].quantity} x de ${formatValue(String(installments[0].value))}` : ''} 
+                </p>                    
+            </div>
+            <button className="buy-btn" onClick={addToCart}>COMPRAR</button>
+        </div>
+        )            
+    }) }
+    </Slider>
+)
+}
+
+export default Products;
