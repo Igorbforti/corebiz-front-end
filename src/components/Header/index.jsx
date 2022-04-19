@@ -1,66 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import './style.css';
+import React from 'react'
 
-import logoImg from '../../assets/images/site-logo-corebiz.png'
+import './style.css'
+import corebiz from '../../assets/images/corebiz-logo.png'
 
-const Header = ({cartQuantity}) => {
-
-    console.log(window.innerWidth)
-
-    return window.innerWidth > 768 ? (
-        <header id="header">
-            <div className="header-nav container">
-                <div className="header-nav-logo">
-                <a href="/">
-                    <img src={logoImg} alt="Corebiz" />
-                </a>
+const App = () => {
+    return (
+        <>
+        <header className='main-header'>
+            <div className='header'>
+                <div className='logo'>
+                    <img src={corebiz} alt='logo'></img>
                 </div>
-                <div className="header-nav-search">
-                <form className="search" action="">
-                    <input type="text" className="search-form" placeholder="O que você está procurando?"/>
-                </form>
+                <div className='search'>
+                    <input type='search' placeholder='O que está procurando?' className='search-bar'></input>
+                    <input type='submit' className='search-btn'></input>
                 </div>
-                <div className="header-nav-account">
-                <a href="#" className="account-text">Minha Conta</a>
+                <div>
+                    <a href='https://google.com' className='account'>Minha Conta</a>
                 </div>
-                <div className="header-nav-cart">
-                <a href="#" className="cart-icon"></a>
-                <span className="cart-quantity" >{cartQuantity}</span>
+                <div>
+                    <p className='minicart'>0</p>
                 </div>
             </div>
         </header>
-    ) : (
-        <header id="header">
-            <div class="header-nav-mobile container">
-                <div class="top-nav">
-                    <div class="top-nav-menu">
-                    <span class="top-nav-menu-icon"></span>
-                    <span class="top-nav-menu-icon"></span>
-                    <span class="top-nav-menu-icon"></span>
-                    </div>
-
-                    <div class="top-nav-logo">
-                    <a href="/">
-                        <img src={logoImg} alt="corebiz" />
-                    </a>
-                    </div>
-                    <div class="top-nav-cart">
-                    <a href="#" class="cart-icon"></a>
-                    <span class="cart-quantity">{cartQuantity}</span>
-                    </div>
-                </div>
-                <div class="header-search">
-                    <form class="search-form" action="">
-                    <input
-                        type="text"
-                        class="search"
-                        placeholder="O que você está procurando?"
-                    />
-                    </form>
-                </div>
-            </div>
-        </header>
+        </>
     )
 }
 
-export default Header;
+export default App
