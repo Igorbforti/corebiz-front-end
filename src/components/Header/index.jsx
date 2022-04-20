@@ -8,7 +8,7 @@ const App = () => {
         <>
         <header className='main-header'>
             <div className='header'>
-                <div className='logo'>
+                <div>
                     <img src={corebiz} alt='logo'></img>
                 </div>
                 <div className='search'>
