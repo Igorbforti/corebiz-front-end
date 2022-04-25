@@ -9,7 +9,7 @@ const Banner = () => {
     
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -43,8 +43,8 @@ const Banner = () => {
     return (
         <div className='banner'>
         <Slider {...settings}>
-            {images.map((photo) => {
-                return (<img src={photo.image} alt='banner'/>)
+            {images.map((photo, index) => {
+                return (<img src={photo.image} key={index} alt={photo.name}></img>)
             })}
         </Slider>
         </div>

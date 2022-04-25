@@ -1,0 +1,22 @@
+.shelf {
+    display: flex;
+    justify-content: center;
+}
+
+.shelf-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    width: 930px;
+    font-size: 20px;
+    font-family: 'Nunito';
+}
+
+.shelf-text:after {
+    content: "";
+    width: 65px;
+    display: block;
+    background-color: #c0c0c0;
+    height: 5px;
+    margin-top: 3px;
+}
