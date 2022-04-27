@@ -1,12 +1,12 @@
 .shelf {
-    width: 1140px;
+    max-width: 1140px;
+    margin: auto;
 }
 
 .shelf-text {
     display: flex;
     flex-direction: column;
     font-weight: 900;
-    width: 930px;
     font-size: 20px;
     font-family: 'Nunito';
 }
