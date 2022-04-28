@@ -1,0 +1,35 @@
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    height: 146px;
+}
+
+.newsletter-text {
+    font-size: 22px;
+    font-family: 'Lato';
+    font-weight: 700;
+    color: #333333;
+}
+
+.newsletter-field {
+    width: 280px;
+    height: 48px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 8px;
+    color: #585858;
+}
+
+.newsletter-button {
+    width: 140px;
+    height: 48px;
+    border-radius: 5px;
+    border: none;
+    background-color: #000;
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 700;
+    color: #ffffff;
+}

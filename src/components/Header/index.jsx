@@ -3,7 +3,7 @@ import React from 'react'
 import './style.css'
 import corebiz from '../../assets/images/corebiz-logo.png'
 
-const App = () => {
+const App = ({cartQuantity}) => {
     return (
         <>
         <header className='main-header'>
@@ -19,7 +19,7 @@ const App = () => {
                     <a href='https://google.com' className='account'>Minha Conta</a>
                 </div>
                 <div>
-                    <p className='minicart'>0</p>
+                    <p className='minicart'>{cartQuantity}</p>
                 </div>
             </div>
         </header>
