@@ -81,3 +81,17 @@
     bottom: 0;
     right: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        display: none;
+    }
+
+    .header-mobile {
+        display: flex;
+    flex-direction: column;
+
+    padding-top: 7px;
+    padding-bottom: 11px;
+    }
+}

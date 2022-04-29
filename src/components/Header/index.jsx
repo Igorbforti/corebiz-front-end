@@ -4,8 +4,7 @@ import './style.css'
 import corebiz from '../../assets/images/corebiz-logo.png'
 
 const App = ({cartQuantity}) => {
-    return (
-        <>
+    return window.innerWidth > 768 ? (
         <header className='main-header'>
             <div className='header'>
                 <div>
@@ -23,7 +22,30 @@ const App = ({cartQuantity}) => {
                 </div>
             </div>
         </header>
-        </>
+    ) : (        
+        <header className='main-header'>
+            <div className='header-mobile'>
+                <div>
+                    <div className='nav-menu'>
+                        <span className='nav-menu-icon'></span>
+                        <span className='nav-menu-icon'></span>
+                        <span className='nav-menu-icon'></span>
+                    </div>
+                    <div className='logo-section'>
+                        <a href="/">
+                            <img src={corebiz} alt="" />
+                        </a>
+                    </div>
+                    <div className='minicart-section'>
+                        <p className='minicart'></p>
+                    </div>
+                    <div className='submit-section'>
+                        <input className='search-bar' type="text" />
+                        <input className='search-btn' type="submit" />
+                    </div>
+                </div>
+            </div>
+        </header>
     )
 }
 
